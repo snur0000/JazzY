@@ -1,7 +1,7 @@
 <%-- 
     Document   : dashboard
     Created on : Feb 12, 2018, 8:28:51 AM
-    Author     : Owner
+    Author     : Owner Batman
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -33,7 +33,7 @@
             Connection con = null;
             Statement stmt = null;
             String driver = "org.apache.derby.jdbc.ClientDataSource";
-            String url = "jdbc:derby://localhost:1527/jazzydb;user=app;password=password";
+            String url = "jdbc:derby://localhost:1527/db;user=username;password=password";
             Class.forName(driver).newInstance();
             con = DriverManager.getConnection(url);
             stmt = con.createStatement();
