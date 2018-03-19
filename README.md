@@ -7,3 +7,5 @@ HTTP Servlet JSP, Glassfish Server 4.1, Apache Derby embedded database, JDBC con
 
 ![alt text](https://github.com/jpwilliams000/JazzY/blob/master/pictures/orderpage.PNG)
 ![alt text](https://github.com/jpwilliams000/JazzY/blob/master/pictures/dashboard.PNG)
+![alt text](https://github.com/jpwilliams000/JazzY/blob/master/pictures/ERD.PNG)
+![alt text](https://github.com/jpwilliams000/JazzY/blob/master/pictures/datadictionary.PNG)
