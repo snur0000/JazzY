@@ -1,0 +1,311 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 9, 2018, 8:36:53 PM
+    Author     : Owner
+*/
+
+
+@charset "UTF-8";
+/* CSS Document */
+
+@charset "UTF-8";
+/* CSS Document */
+
+html { 
+  background-color: #333;
+  background: url(../images/bass_bkgd.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow: scroll;
+  height: 100%;
+}
+
+body, html {
+   width: 100%;
+  min-width: 725px;
+  background-color: #333;
+  margin: 0;
+
+}
+
+body {
+  font-family: 'Open Sans', sans-serif; 
+  background-color: #333333;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.wrapper {
+  min-height: 100%;
+}
+
+.homepage {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.center-text {
+  text-align: center;
+}
+
+/* Navigation */
+header {
+  height: 50px;
+  background-color: #450000;
+}
+
+.logo {
+  color: #fff;
+  text-align: undefined;
+  /* [disabled]width: 38%; */
+  float: left;
+  margin-top: 15px;
+  margin-left: 35px;
+  letter-spacing: 4px;
+}
+
+nav {
+  float: right;
+  /* [disabled]width: 50%; */
+  text-align: right;
+  margin-right: 25px;
+}
+
+header nav ul {
+	list-style: none;
+	float: right;
+}
+
+nav ul li {
+	float: left;
+	color: #FFFFFF;
+	font-size: 14px;
+	text-align: left;
+	margin-right: 25px;
+	letter-spacing: 2px;
+}
+
+nav ul li a {
+	color: #FFFFFF;
+	text-decoration: none;
+  transition: 0.1s ease-out;
+  padding: 10px;
+}
+
+nav ul li:hover a, .selected {
+  background-color: #555;
+}
+
+.content {
+  position: absolute; 
+  top: 80px;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto;
+  margin-bottom: 100px; 
+  width:850px;
+  height:auto;
+  color: #fff;
+  background-color: rgba(0,0,0,0.85);
+  text-align: center;
+}
+
+.btn-div {
+  line-height: 200px;
+}
+
+.btn-link {
+  background-color: #B9B9B9;
+  font-size: 1em;
+  width: 200px;
+  height: 30px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border: 1px solid #000;
+  border-radius: 6px;
+  transition: .05s ease-in-out;
+  box-shadow: 1px 1px 1px 2px rgba(100,100,100,.3);
+    cursor: pointer;
+
+}
+
+.btn-link:hover {
+  background-color: #ffffff;
+  box-shadow: 2px 2px 2px 2px rgba(100,100,100,.6);
+}
+
+
+.copyright {
+  font-size: .6em;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  margin-top: 100px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #450000;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  font-weight: normal;
+  letter-spacing: 2px;
+  border-top-width: 2px;
+}
+
+.float-r {
+  float: right;
+}
+
+.float-l {
+  float: left;
+}
+
+.table-tickets {
+  position: absolute; 
+  top: 80px;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto;
+  margin-bottom: 100px; 
+  width: 850px;
+  height: auto;
+  color: #fff;
+  background-color: rgba(0,0,0,0.85);
+  text-align: center;
+   
+}
+
+.ticket-form td, .ticket-form th {
+  width: 200px;
+}
+
+.tables-dashboard {
+  position: absolute; 
+  top: 80px;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto;
+  margin-bottom: 100px; 
+  width: 950px;
+  height: auto;
+  color: #fff;
+  background-color: rgba(0,0,0,0.85);
+  text-align: center;
+  padding: 10px; 
+}
+
+.table01 {
+  width: 470px;
+}
+
+.tables-dashboard h2 {
+  margin-bottom: 3px;
+  padding: 0;
+  text-align: center;
+}
+
+.inline {
+  display: inline; 
+}
+
+/*form, form table {
+  text-align: center;
+  display: block;
+  margin: auto;
+  
+}*/
+
+.form-left{
+  text-align: left;
+}
+
+.radio-align {
+  margin-left: 0px;
+}
+
+.small-print {
+  font-size: .8em;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+table {
+  color: #ffffff;
+  margin-bottom: 25px;
+  border: solid 1px;
+  border-color: rgba(97,97,97,1.00);
+}
+
+/*tr, td {
+  width: 200px;
+}*/
+
+th {
+  font-weight: 400;
+  font-size: 0.9em;
+  width: 250px;
+}
+
+tbody>tr:nth-child(1), .table-heading {
+  color: rgba(229,229,229,1.00);
+  text-transform: uppercase;
+  font-size: 1em;
+  font-weight: bolder;
+  font-weight: normal;
+}
+
+.table-heading {
+  padding-bottom: 2px;
+  margin: 0;
+}
+
+.ticket-form {
+  border: none;
+  display: block;
+  margin: auto;
+  width: 600px;
+  text-align: left;
+}
+
+.customer-info-table tr {
+  margin-right: 1px;
+}
+
+.customer-heading {
+  text-transform: capitalize;
+  font-size: .8em;
+}
+
+.form-names {
+  width: 170px;
+}
+
+.form-address {
+  width: 355px;
+}
+
+.form-city {
+  width: 120px
+}
+
+.form-state {
+  width: 138px;
+}
+
+.form-zip {
+  width: 70px
+}
+
+.form-email {
+  width: 170px;
+}
