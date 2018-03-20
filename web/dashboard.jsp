@@ -29,7 +29,7 @@
     <body>
 
         <%
-            //create connection
+            //TODO Need try catch to regulate resource consumption.
             Connection con = null;
             Statement stmt = null;
             String driver = "org.apache.derby.jdbc.ClientDataSource";
@@ -37,7 +37,8 @@
             Class.forName(driver).newInstance();
             con = DriverManager.getConnection(url);
             stmt = con.createStatement();
-            //variables
+            
+            //variables. If none yet sold (aka try fails below) these will also be the initial values
             int totalNumberTicketsSoldI = 0;
             int totalNumberTicketsSoldII = 0;
             int totalNumberTicketsSoldIII = 0;
@@ -65,6 +66,7 @@
                     System.out.println(ex.getMessage());
                 }
             }
+            
             //variables
             int seatsRemainingI = 0;
             int seatsRemainingII = 0;
