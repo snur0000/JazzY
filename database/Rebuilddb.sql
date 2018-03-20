@@ -38,7 +38,8 @@ CREATE TABLE Orders
 	OrderDate DATE NOT NULL,
 	ShipCost FLOAT,
 	AquisitionFee FLOAT,
-	PRIMARY KEY(OrderID)
+        TotalBill FLOAT,	
+        PRIMARY KEY(OrderID)
 	);
 
 CREATE TABLE ORDERITEMS
@@ -52,5 +53,4 @@ CREATE TABLE ORDERITEMS
 --REFERENCE TABLE VALUES--
     INSERT INTO Tickets VALUES (1,50,75);
     INSERT INTO Tickets VALUES (2,40,75);
-    INSERT INTO Tickets VALUES (3,30,75);
-          
+    INSERT INTO Tickets VALUES (3,30,75);       
