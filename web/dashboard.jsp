@@ -29,7 +29,7 @@
     <body>
 
         <%
-            //TODO Need try catch to regulate resource consumption.
+            //create connection
             Connection con = null;
             Statement stmt = null;
             String driver = "org.apache.derby.jdbc.ClientDataSource";
@@ -37,8 +37,7 @@
             Class.forName(driver).newInstance();
             con = DriverManager.getConnection(url);
             stmt = con.createStatement();
-            
-            //variables. If none yet sold (aka try fails below) these will also be the initial values
+            //variables
             int totalNumberTicketsSoldI = 0;
             int totalNumberTicketsSoldII = 0;
             int totalNumberTicketsSoldIII = 0;
@@ -66,7 +65,6 @@
                     System.out.println(ex.getMessage());
                 }
             }
-            
             //variables
             int seatsRemainingI = 0;
             int seatsRemainingII = 0;
@@ -126,6 +124,17 @@
             while (rs9.next()) {
                 try {
                     salesCategoryIII = Integer.parseInt(rs9.getString(1));
+                } catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+            
+            //variables
+            float totalSales = 0;
+            ResultSet rs10 = stmt.executeQuery("Select SUM(TotalBill) From ORDERS");
+            while (rs10.next()) {
+                try {
+                    totalSales = Float.parseFloat(rs10.getString(1));
                 } catch (Exception ex) {
                     System.out.println(ex.getMessage());
                 }
@@ -221,7 +230,7 @@
                     <tbody>
                         <tr>
                             <th scope="row">Total Sales (USD)</th>
-                            <td width="220">&nbsp;</td>
+                            <td width="220"><%= totalSales%></td>
                         </tr>
                     </tbody>
                 </table>
