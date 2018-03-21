@@ -1,10 +1,11 @@
 /* 
- * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers in Project 
+Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 /**
- * Author:  Owner sdf sdf
+ * Author:  Owner
  * Created: Feb 9, 2018
  */
 
@@ -21,7 +22,8 @@ CREATE TABLE Tickets
 	);
 	
 CREATE TABLE Customers
-	(CustomerID  INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1000, INCREMENT BY 1),
+	(CustomerID  INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START 
+WITH 1000, INCREMENT BY 1),
 	CustLastName VARCHAR(10) NOT NULL,
 	CustFirstName VARCHAR(10) NOT NULL,
 	CustAddress VARCHAR(20),
@@ -33,12 +35,13 @@ CREATE TABLE Customers
 	);
 
 CREATE TABLE Orders
-	(OrderID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 100, INCREMENT BY 1),
+	(OrderID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 
+100, INCREMENT BY 1),
 	CustomerID INTEGER references Customers(CustomerID),
 	OrderDate DATE NOT NULL,
-	ShipCost FLOAT,
-	AquisitionFee FLOAT,
-        TotalBill FLOAT,	
+	ShipCost Decimal(10,2),
+	AquisitionFee Decimal(10,2),
+        TotalBill Decimal(10,2),	
         PRIMARY KEY(OrderID)
 	);
 
