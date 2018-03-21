@@ -66,9 +66,9 @@
                 }
             }
             //variables
-            int seatsRemainingI = 0;
-            int seatsRemainingII = 0;
-            int seatsRemainingIII = 0;
+            int seatsRemainingI = 75;
+            int seatsRemainingII = 75;
+            int seatsRemainingIII = 75;
             
             ResultSet rs4 = stmt.executeQuery("Select (Select MaxAvailable From Tickets where ticketSection = 1)-SUM(Quantity) from ORDERITEMS where ticketsection = 1");
             while (rs4.next()) {
