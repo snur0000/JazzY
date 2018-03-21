@@ -92,11 +92,13 @@ public class ProcessForm extends HttpServlet {
                 String newCustomerInsert = "INSERT INTO CUSTOMERS VALUES( default, '" + lastName + "', '" + firstName + "', '" + address + "', "
                         + "'" + city + "', '" + state + "', '" + zip + "', '" + email + "')";
                 stmt.executeUpdate(newCustomerInsert);
+                
                 //ExecuteSQL: get current customerID, to use as foreign key
                 ResultSet rs = stmt.executeQuery("SELECT MAX(CustomerID) FROM Customers");
                 while (rs.next()) {
                     currentCustomerID = Integer.parseInt(rs.getString(1));
                 }
+                
                 //InsertSQL: insert order information using the foreign key CustomerID
                 try {
                     if (request.getParameter("Radio").equals("Shipping")) {
@@ -112,7 +114,7 @@ public class ProcessForm extends HttpServlet {
                 } catch (Exception ex) {
                     System.out.println("ERROR: " + ex.getMessage());
                 };
-                String newOrderInsert = "INSERT INTO Orders VALUES(default, " + currentCustomerID + ",'" + orderDate + "', " + shipCost + "," + aquisitionFee + ")";
+                String newOrderInsert = "INSERT INTO Orders (OrderID, CustomerID, OrderDate, ShipCost, AquisitionFee) VALUES(default, " + currentCustomerID + ",'" + orderDate + "', " + shipCost + "," + aquisitionFee + ")";
                 stmt.executeUpdate(newOrderInsert);
 
                 //obtain current customerID, to use as foreign key
