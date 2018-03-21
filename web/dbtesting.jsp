@@ -105,7 +105,10 @@
                 ShipCost :                 
                 <%=rs.getString("ShipCost")%>
                 AquisitionFee :                 
-                <%=rs.getString("AquisitionFee")%>  <br>            
+                <%=rs.getString("AquisitionFee")%>
+                TotalBill :                 
+                <%=rs.getString("TotalBill")%>
+                <br>            
             </li>                      
             <% }
                 if (isOrdersTableEmpty) {
