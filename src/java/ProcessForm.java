@@ -50,29 +50,19 @@ public class ProcessForm extends HttpServlet {
                 int currentCustomerID = 100; //to be determined with query
                 String orderDate = "2018-01-25"; //TODO SE core api new dateNow()
                 final double SHIPPING_COST = 5.95;
-                final double ACQUISTION_FEE = 0.7;
+                final double ACQUISTION_FEE = 0.07;
                 double shipCost = 0; //to be determined with boolean
                 double aquisitionFee = 0; //to be determined with boolean
 
-                //set variables
+                //get ticket information
                 int currentOrderID = 100; //to be determined with query
                 int itemNumberCounter = 1;
-                int ticketSectionICost = 50;
-                int ticketSectionIICost = 40;
-                int ticketSectionIIICost = 30;
                 final int TICKET_SECTION_I = 1;
                 final int TICKET_SECTION_II = 2;
                 final int TICKET_SECTION_III = 3;
-                //get ticket quantities from html form
                 int ticketQuantityI = Integer.parseInt(request.getParameter("Category_One"));
                 int ticketQuantityII = Integer.parseInt(request.getParameter("Category_Two"));
                 int ticketQuantityIII = Integer.parseInt(request.getParameter("Category_Three"));
-                //Math variables for total bill
-                double SectionICost = ticketSectionICost*ticketQuantityI;
-                double SectionIICost = ticketSectionIICost*ticketQuantityII;
-                double SectionIIICost = ticketSectionIIICost*ticketQuantityIII;
-                double totalTicketBaseCost = SectionICost+SectionIICost+SectionIIICost;
-                
 
         try (PrintWriter out = response.getWriter()) {
            
@@ -102,13 +92,11 @@ public class ProcessForm extends HttpServlet {
                 String newCustomerInsert = "INSERT INTO CUSTOMERS VALUES( default, '" + lastName + "', '" + firstName + "', '" + address + "', "
                         + "'" + city + "', '" + state + "', '" + zip + "', '" + email + "')";
                 stmt.executeUpdate(newCustomerInsert);
-                
                 //ExecuteSQL: get current customerID, to use as foreign key
                 ResultSet rs = stmt.executeQuery("SELECT MAX(CustomerID) FROM Customers");
                 while (rs.next()) {
                     currentCustomerID = Integer.parseInt(rs.getString(1));
                 }
-                
                 //InsertSQL: insert order information using the foreign key CustomerID
                 try {
                     if (request.getParameter("Radio").equals("Shipping")) {
@@ -124,10 +112,7 @@ public class ProcessForm extends HttpServlet {
                 } catch (Exception ex) {
                     System.out.println("ERROR: " + ex.getMessage());
                 };
-                //TotalBill logic
-                double totalBill = ((totalTicketBaseCost * (1+aquisitionFee)) + shipCost);
-                //insert into orders statement
-                String newOrderInsert = "INSERT INTO Orders VALUES(default, " + currentCustomerID + ",'" + orderDate + "', " + shipCost + "," + aquisitionFee + "," + totalBill + ")";
+                String newOrderInsert = "INSERT INTO Orders VALUES(default, " + currentCustomerID + ",'" + orderDate + "', " + shipCost + "," + aquisitionFee + ")";
                 stmt.executeUpdate(newOrderInsert);
 
                 //obtain current customerID, to use as foreign key
