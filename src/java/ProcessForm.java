@@ -50,7 +50,7 @@ public class ProcessForm extends HttpServlet {
                 int currentCustomerID = 100; //to be determined with query
                 String orderDate = "2018-01-25"; //TODO SE core api new dateNow()
                 final double SHIPPING_COST = 5.95;
-                final double ACQUISTION_FEE = 0.7;
+                final double ACQUISTION_FEE = 0.07;
                 double shipCost = 0; //to be determined with boolean
                 double aquisitionFee = 0; //to be determined with boolean
 
