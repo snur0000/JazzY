@@ -27,6 +27,16 @@
             <![endif]-->
     </head>
     <body>
+        <%!
+                int sum;
+                void HelloWorld(){
+                int x = 5;
+                int y = 5;
+                sum = x + y;
+                
+            }
+        
+            %>
 
         <%
             //create connection
@@ -37,7 +47,9 @@
             Class.forName(driver).newInstance();
             con = DriverManager.getConnection(url);
             stmt = con.createStatement();
-
+            
+            HelloWorld();
+            
             //variables
             int totalNumberTicketsSoldI = 0;
             int totalNumberTicketsSoldII = 0;
@@ -173,7 +185,7 @@
                         </tr>
                         <tr>
                             <th scope="row">Category 1</th>
-                            <td>&nbsp;</td>
+                            <td><%= sum%></td>
                         </tr>
                         <tr>
                             <th scope="row">Category 2</th>
