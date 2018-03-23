@@ -1,7 +1,7 @@
 <%-- 
     Document   : dashboard
     Created on : Feb 12, 2018, 8:28:51 AM
-    Author     : Owner Batman
+    Author     : Owner
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -37,12 +37,10 @@
             Class.forName(driver).newInstance();
             con = DriverManager.getConnection(url);
             stmt = con.createStatement();
-
             //variables
             int totalNumberTicketsSoldI = 0;
             int totalNumberTicketsSoldII = 0;
             int totalNumberTicketsSoldIII = 0;
-
             ResultSet rs = stmt.executeQuery("Select SUM(Quantity) from ORDERITEMS where ticketsection = 1");
             while (rs.next()) {
                 try {
@@ -51,7 +49,6 @@
                     System.out.println(ex.getMessage());
                 }
             }
-
             ResultSet rs2 = stmt.executeQuery("Select SUM(Quantity) from ORDERITEMS where ticketsection = 2");
             while (rs2.next()) {
                 try {
@@ -60,7 +57,6 @@
                     System.out.println(ex.getMessage());
                 }
             }
-
             ResultSet rs3 = stmt.executeQuery("Select SUM(Quantity) from ORDERITEMS where ticketsection = 3");
             while (rs3.next()) {
                 try {
@@ -69,11 +65,10 @@
                     System.out.println(ex.getMessage());
                 }
             }
-
             //variables
-            int seatsRemainingI = 0;
-            int seatsRemainingII = 0;
-            int seatsRemainingIII = 0;
+            int seatsRemainingI = 75;
+            int seatsRemainingII = 75;
+            int seatsRemainingIII = 75;
             
             ResultSet rs4 = stmt.executeQuery("Select (Select MaxAvailable From Tickets where ticketSection = 1)-SUM(Quantity) from ORDERITEMS where ticketsection = 1");
             while (rs4.next()) {
@@ -101,8 +96,51 @@
                     System.out.println(ex.getMessage());
                 }
             }
-
+            
+            //variables
+            int salesCategoryI = 0;
+            int salesCategoryII = 0;
+            int salesCategoryIII = 0;
+            
+            ResultSet rs7 = stmt.executeQuery("Select SUM((Select Cost From Tickets where ticketSection = 1)*Quantity) from ORDERITEMS where ticketsection = 1");
+            while (rs7.next()) {
+                try {
+                    salesCategoryI = Integer.parseInt(rs7.getString(1));
+                } catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+            
+            ResultSet rs8 = stmt.executeQuery("Select SUM((Select Cost From Tickets where ticketSection = 2)*Quantity) from ORDERITEMS where ticketsection = 2");
+            while (rs8.next()) {
+                try {
+                    salesCategoryII = Integer.parseInt(rs8.getString(1));
+                } catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+            
+            ResultSet rs9 = stmt.executeQuery("Select SUM((Select Cost From Tickets where ticketSection = 3)*Quantity) from ORDERITEMS where ticketsection = 3");
+            while (rs9.next()) {
+                try {
+                    salesCategoryIII = Integer.parseInt(rs9.getString(1));
+                } catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+            
+            //variables
+            float totalSales = 0;
+            ResultSet rs10 = stmt.executeQuery("Select SUM(TotalBill) From ORDERS");
+            while (rs10.next()) {
+                try {
+                    totalSales = Float.parseFloat(rs10.getString(1));
+                } catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
         %>
+       
 
         <header>
             <a href="index.html"><h4 class="logo">JAZZ CONCERT</h4></a>
@@ -173,15 +211,15 @@
                         </tr>
                         <tr>
                             <th scope="row">Category 1</th>
-                            <td>&nbsp;</td>
+                            <td><%= salesCategoryI%></td>
                         </tr>
                         <tr>
                             <th scope="row">Category 2</th>
-                            <td>&nbsp;</td>
+                            <td><%= salesCategoryII%></td>
                         </tr>
                         <tr>
                             <th scope="row">Category 3</th>
-                            <td>&nbsp;</td>
+                            <td><%= salesCategoryIII%></td>
                         </tr>
                     </tbody>
                 </table>
@@ -192,7 +230,7 @@
                     <tbody>
                         <tr>
                             <th scope="row">Total Sales (USD)</th>
-                            <td width="220">&nbsp;</td>
+                            <td width="220"><%= totalSales%></td>
                         </tr>
                     </tbody>
                 </table>
