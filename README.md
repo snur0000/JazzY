@@ -5,16 +5,26 @@ Although many of the styles of JSP are quickly being supplemented with framework
 
 HTTP Servlet JSP, Glassfish Server 4.1, Apache Derby embedded database, JDBC connectivity, RDBMS 3NF standardized, HTML5, CSS3.
 
-TODO List 03-19-18: 
+Contributors
+
+The following have had a contribution in the design and development:<br>
+
+Greg Conrad - Front End Ninja<br>
+Sabrina Nurr - Font end, UX<br>
+Connor Bramble - Database Administrator, Scrum Master<br>
+Adrian Mora - Database Associate<br>
+James Pata - Developer, Backend<br>
+ 
+ TODO List 03-19-18: 
 1. <strong>Connor</strong> - add bill total row to table
 2. <strong>Greg</strong> - validation of at least 1 ticket (aka do not accept 0,0,0 for all categories) (DONE) 
-3. <Strong>Adrian</strong>the last few queries for dashboard page (NEEDS TABLE EXPANDED FOR TOTAL BILL)
-4. <Strong>James</strong> prepared statements only, as required by project limitations. 
-5. <strong>Sabrina</strong>information on success page (aka confirmation with total cost, ect. ect.) 
+3. <Strong>Adrian</strong> - the last few queries for dashboard page (NEEDS TABLE EXPANDED FOR TOTAL BILL)
+4. <Strong>James</strong> - prepared statements only, as required by project limitations. 
+5. <strong>Sabrina</strong> - UI Design information on success page (aka confirmation with total cost, ect. ect.) 
 6. Retain radio button preference after a failed validation
 7. Retain the state preference after a failed validation
-8. <strong>James</strong>Manage connection pool resources. Add correct try-catch {conn.close()} for database resources
-
+8. <strong>James</strong> - Manage connection pool resources. Add correct try-catch {conn.close()} for database resources
+ 
 ![alt text](https://github.com/jpwilliams000/JazzY/blob/master/pictures/orderpage.PNG)
 ![alt text](https://github.com/jpwilliams000/JazzY/blob/master/pictures/dashboard.PNG)
 ![alt text](https://github.com/jpwilliams000/JazzY/blob/master/pictures/ERD.PNG)
