@@ -13,6 +13,7 @@ drop table OrderItems;
 drop table Orders;
 drop table Customers;
 drop table Tickets;
+drop table PurchaseOptionData;
 
 CREATE TABLE Tickets
 	(TicketSection INTEGER,
@@ -22,8 +23,7 @@ CREATE TABLE Tickets
 	);
 	
 CREATE TABLE Customers
-	(CustomerID  INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START 
-WITH 1000, INCREMENT BY 1),
+	(CustomerID  INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1000, INCREMENT BY 1),
 	CustLastName VARCHAR(10) NOT NULL,
 	CustFirstName VARCHAR(10) NOT NULL,
 	CustAddress VARCHAR(20),
@@ -35,8 +35,7 @@ WITH 1000, INCREMENT BY 1),
 	);
 
 CREATE TABLE Orders
-	(OrderID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 
-100, INCREMENT BY 1),
+	(OrderID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 100, INCREMENT BY 1),
 	CustomerID INTEGER references Customers(CustomerID),
 	OrderDate DATE NOT NULL,
 	ShipCost Decimal(10,2),
@@ -45,7 +44,7 @@ CREATE TABLE Orders
         PRIMARY KEY(OrderID)
 	);
 
-CREATE TABLE ORDERITEMS
+CREATE TABLE OrderItems
 	(OrderID INTEGER references Orders(OrderID),
 	 ItemNumber INTEGER,
 	 TicketSection INTEGER references Tickets(TicketSection),
@@ -53,7 +52,14 @@ CREATE TABLE ORDERITEMS
 	 PRIMARY KEY (OrderID, ItemNumber)
 	);
 
+CREATE TABLE PurchaseOptionData
+        (ShippingFee Decimal(10,2),
+        ProccessingFee Decimal (10,2)
+        );
+
 --REFERENCE TABLE VALUES--
     INSERT INTO Tickets VALUES (1,50,75);
     INSERT INTO Tickets VALUES (2,40,75);
-    INSERT INTO Tickets VALUES (3,30,75);       
+    INSERT INTO Tickets VALUES (3,30,75);  
+
+    INSERT INTO PurchaseOptionData VALUES (5.95, 0.07);
