@@ -41,18 +41,14 @@
         <h2>Select * FROM Customers;</h2>
         <ol>
             <%
-                //Get connection create statement
-                Connection con = null;
-                Statement stmt = null;
-                ResultSet rs = null;
+                //Get connection 
+                getConnection();
+                
                 boolean isCustomerTableEmpty = true;
 
-                String driver = "org.apache.derby.jdbc.ClientDataSource";
-                String url = "jdbc:derby://localhost:1527/db;user=username;password=password";
-
-                Class.forName(driver).newInstance();
-                con = DriverManager.getConnection(url);
-                stmt = con.createStatement();
+                //get method status
+                String method = "";
+                method = request.getMethod();
 
                 //ExectueSQL: get all state from customers
                 String query = "SELECT * FROM CUSTOMERS"; //Send query to the database and store result in ResultSet         
@@ -104,11 +100,10 @@
                 <%=rs.getString("OrderDate")%>
                 ShipCost :                 
                 <%=rs.getString("ShipCost")%>
-                AquisitionFee :                 
-                <%=rs.getString("AquisitionFee")%>
-                TotalBill :                 
-                <%=rs.getString("TotalBill")%>
-                <br>            
+                ProccessingRate :                 
+                <%=rs.getString("AquisitionFee")%>  
+                Total Bill :                 
+                <%=rs.getString("TotalBill")%><br>            
             </li>                      
             <% }
                 if (isOrdersTableEmpty) {
@@ -131,7 +126,7 @@
             %> 
             <li>Order ID: 
                 <%=rs.getString("OrderID")%>                     
-                Item Number:                  
+                Item number:                  
                 <%=rs.getString("ItemNumber")%>                   
                 Ticket Section :                 
                 <%=rs.getString("TicketSection")%>
@@ -145,7 +140,56 @@
                 <%
                     }
                 %> 
+                <%
+                    if (method.equalsIgnoreCase("POST")) { 
+                        updatePrice(Integer.parseInt(request.getParameter("updatedPriceI")), 1);
+                        updatePrice(Integer.parseInt(request.getParameter("updatedPriceII")), 2);
+                        updatePrice(Integer.parseInt(request.getParameter("updatedPriceIII")), 3);
+                    }
+                %>
+            <form method="POST" action="dbtesting.jsp">
+                <td><h2>Update Prices:</h2><td>
+                <td><input name="updatedPriceI" type="number" placeholder="Change Ticket One Price" value="0" min="0" required></td>
+
+
+
+                <td><input name="updatedPriceII" type="number" placeholder="Change Ticket Two Price" value="0" min="0" required></td>
+
+
+
+                <td><input name="updatedPriceIII" type="number" placeholder="Change Ticket Three Price" value="0" min="0" required></td>
+                <input class='btn-link' value='Update ALL prices' type='submit'>  
+            </form>
         </ol>
 
     </body>
 </html>
+<%!
+    //Global Interface Fields
+    private Connection con;
+    private Statement stmt;
+    private ResultSet rs;
+
+    private void getConnection() {
+        try {
+
+            String driver = "org.apache.derby.jdbc.ClientDataSource";
+            String url = "jdbc:derby://localhost:1527/jazzydb;user=app;password=password";
+            Class.forName(driver).newInstance();
+            con = DriverManager.getConnection(url);
+            stmt = con.createStatement();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+        }
+    }
+
+    public void updatePrice(int updatedPrice, int section){
+        String query = "UPDATE Tickets SET Cost = " + updatedPrice + " WHERE TicketSection = " + section + "";
+        try {
+            stmt.executeUpdate(query);
+        } catch (Exception e) {
+        } finally {
+        }
+    }
+%>
