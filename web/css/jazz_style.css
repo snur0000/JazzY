@@ -41,6 +41,10 @@ body {
   font-weight: normal;
 }
 
+p.warning {
+    color:red;
+}
+
 .wrapper {
   min-height: 100%;
 }
@@ -309,3 +313,32 @@ tbody>tr:nth-child(1), .table-heading {
 .form-email {
   width: 170px;
 }
+
+a.hiddenlink:link    {
+  /* Applies to unvisited links of class mainNav */
+  text-decoration:  none;
+  font-weight:      bold;
+  background-color: #ddd;
+  color:            blue;
+  } 
+a.hiddenlink:visited {
+  /* Applies to visited links of class mainNav */
+  text-decoration:  none;
+  font-weight:      bold;
+  background-color: #ddd;
+  color:            #f0f;
+  } 
+a.hiddenlink:hover   {
+  /* Applies to links under the pointer of class mainNav */
+  text-decoration:  underline;
+  font-weight:      bold;
+  background-color: blue;
+  color:            #fff;
+  } 
+a.hiddenlink:active  {
+  /* Applies to activated links of class mainNav */
+  text-decoration:  underline;
+  font-weight:      bold;
+  background-color: black;
+  color: white;
+  } 
