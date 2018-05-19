@@ -13,7 +13,7 @@ Greg Conrad - Front End Ninja<br>
 Sabrina Nurr - Font end, UX<br>
 Connor Bramble - Database Administrator, Scrum Master<br>
 Adrian Mora - Database Associate<br>
-James Pata - Developer, Backend<br>
+James Pata - Developer, Backend Developer<br>
  
  TODO List 03-19-18: 
 1. <strong>Connor</strong> - add bill total row to table
